@@ -44,7 +44,7 @@ from streamlit_option_menu import option_menu
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import auth
-cred = credentials.Certificate(r'C:\Users\522an\Downloads\myapp-20240102T172855Z-001\myapp\sales-report-aacf5-d50b776c52aa.json')
+cred = credentials.Certificate(r'C:\Users\522an\Downloads\myapp-20240102T172855Z-001\myapp\secret\sales-report-aacf5-d50b776c52aa.json')
 # firebase_admin.initialize_app(cred,"App")
 import mymodule
 
