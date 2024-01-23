@@ -17,8 +17,7 @@ aprovider=st.secrets.auth_provider_x509_cert_url
 cert=st.secrets.client_x509_cert_url
 udom=st.secrets.universe_domain
 
-json_string = f"""
-{
+json_string = f"""{{
     "type": {tp},
     "project_id": {project_id},
     "private_key_id": {pkid},
@@ -30,7 +29,7 @@ json_string = f"""
     "auth_provider_x509_cert_url": {aprovider},
     "client_x509_cert_url": {cert},
     "universe_domain": {udom}
-}
+}}
 """
 data = json.loads(json_string)
 
