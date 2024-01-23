@@ -55,7 +55,7 @@ cert=st.secrets.client_x509_cert_url
 udom=st.secrets.universe_domain
 
 json_string = f"""
-{
+{{
     "type": {tp},
     "project_id": {project_id},
     "private_key_id": {pkid},
@@ -67,11 +67,11 @@ json_string = f"""
     "auth_provider_x509_cert_url": {aprovider},
     "client_x509_cert_url": {cert},
     "universe_domain": {udom}
-}
+}}
 """
 data = json.loads(json_string)
 
-cred = credentials.Certificate(data)
+cred = credentials.Certificate(json_string)
 
 # firebase_admin.initialize_app(cred,"App")
 

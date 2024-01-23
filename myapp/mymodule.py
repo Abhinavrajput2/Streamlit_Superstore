@@ -34,7 +34,7 @@ json_string = f"""{{
 data = json.loads(json_string)
 
 
-cred = credentials.Certificate(data)
+cred = credentials.Certificate(json_string)
 # firebase_admin.initialize_app(cred,"App")
 
 def app():
