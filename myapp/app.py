@@ -3,22 +3,23 @@ import plotly.express as px
 import pandas as pd
 import os
 import warnings
-
-warnings.filterwarnings('ignore')
-
+import hydralit_components as hc #
 import pickle
 from pathlib import Path
 import streamlit_authenticator as stauth # pip install streamlit-authenticator
+import mymodule
+#---USER AUTHENTICATOR--------------------
+from streamlit_option_menu import option_menu
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import auth
+
+warnings.filterwarnings('ignore')
 
 
 st.set_page_config(page_title="Abhinav Superstore!!!", page_icon="chart_with_upwards_trend",layout="wide",initial_sidebar_state="auto")
 st.title(" :chart_with_upwards_trend: SuperStore ")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>',unsafe_allow_html=True)
-
-
-
-import hydralit_components as hc #
-
 
 # specify the primary menu definition
 menu_data = [
@@ -39,15 +40,39 @@ menu_id = hc.nav_bar(menu_definition=menu_data,home_name='Home',override_theme=o
     
 #get the id of the menu item clicked
 st.info(f"{menu_id=}")
-#---USER AUTHENTICATOR--------------------
-from streamlit_option_menu import option_menu
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import auth
-cred = credentials.Certificate(r'/workspaces/Streamlit_Superstore/myapp/secret.json')
-# firebase_admin.initialize_app(cred,"App")
-import mymodule
 
+tp = st.secrets.type
+project_id = st.secrets.project_id
+pkid = st.secrets.private_key_id
+pk=st.secrets.private_key
+cemail=st.secrets.client_email
+cid=st.secrets.client_id
+auri=st.secrets.auth_uri
+turi=st.secrets.token_uri
+aprovider=st.secrets.auth_provider_x509_cert_url
+cert=st.secrets.client_x509_cert_url
+udom=st.secrets.universe_domain
+
+json_string = f"""
+{
+    "type": {tp},
+    "project_id": {project_id},
+    "private_key_id": {pkid},
+    "private_key": {pk},
+    "client_email": {cemail},
+    "client_id": {cid},
+    "auth_uri": {auri},
+    "token_uri": {turi},
+    "auth_provider_x509_cert_url": {aprovider},
+    "client_x509_cert_url": {cert},
+    "universe_domain": {udom}
+}
+"""
+data = json.loads(json_string)
+
+cred = credentials.Certificate(data)
+
+# firebase_admin.initialize_app(cred,"App")
 
 with st.sidebar:
     selected = option_menu(
