@@ -3,3 +3,4 @@ hydralit
 streamlit-authenticator
 streamlit_option_menu
 firebase_admin
+matplotlib
