@@ -2,7 +2,40 @@ import streamlit as st
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import auth
-cred = credentials.Certificate(r'/workspaces/Streamlit_Superstore/myapp/secret.json')
+import json
+
+
+tp = st.secrets.type
+project_id = st.secrets.project_id
+pkid = st.secrets.private_key_id
+pk=st.secrets.private_key
+cemail=st.secrets.client_email
+cid=st.secrets.client_id
+auri=st.secrets.auth_uri
+turi=st.secrets.token_uri
+aprovider=st.secrets.auth_provider_x509_cert_url
+cert=st.secrets.client_x509_cert_url
+udom=st.secrets.universe_domain
+
+json_string = f"""
+{
+    "type": {tp},
+    "project_id": {project_id},
+    "private_key_id": {pkid},
+    "private_key": {pk},
+    "client_email": {cemail},
+    "client_id": {cid},
+    "auth_uri": {auri},
+    "token_uri": {turi},
+    "auth_provider_x509_cert_url": {aprovider},
+    "client_x509_cert_url": {cert},
+    "universe_domain": {udom}
+}
+"""
+data = json.loads(json_string)
+
+
+cred = credentials.Certificate(data)
 # firebase_admin.initialize_app(cred,"App")
 
 def app():
