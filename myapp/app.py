@@ -3,6 +3,7 @@ import plotly.express as px
 import pandas as pd
 import os
 import warnings
+import matplotlib
 import hydralit_components as hc #
 import pickle
 from pathlib import Path
