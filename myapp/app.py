@@ -3,7 +3,7 @@ import plotly.express as px
 import pandas as pd
 import os
 import warnings
-import hydralit_components as hc
+# import hydralit_components as hc
 import streamlit_authenticator as stauth # pip install streamlit-authenticator
 import mymodule
 #---USER AUTHENTICATOR--------------------
