@@ -3,15 +3,11 @@ import plotly.express as px
 import pandas as pd
 import os
 import warnings
-import matplotlib
-import hydralit_components as hc #
-import pickle
-from pathlib import Path
+import hydralit_components as hc
 import streamlit_authenticator as stauth # pip install streamlit-authenticator
 import mymodule
 #---USER AUTHENTICATOR--------------------
 from streamlit_option_menu import option_menu
-import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import auth
 import json
